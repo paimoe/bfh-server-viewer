@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p class="server">Server: {{ info.server }}</p>
+
+{% if info.archived %}
+<h1 class="status">Viewing an archived {{ info.map }} round on {{ info.start }}</h1>
+{% else %}
+    {% if info.running %}
+    <h1 class="status">
+        <span class="map">{{ info.map }}</span>
+        In progress for <span id="in_progress">{{ info.start_time|timesince }}</span>
+    </h1>
+    {% endif %}
+{% endif %}
+
+{% if not info.archived %}
+<div id="update">
+    Last updated <span id="last_update_seconds">0</span> seconds ago.
+</div>
+{% endif %}
+
+    <div id="score">
+        <div id="left">
+            {{ team1.score }}
+        </div>
+        <div id="right">
+            {{ team2.score }}
+        </div>
+    </div>
+
+    <div id="players-left">
+
+        <table  class="players" cellspacing="0">
+            <tr class="labels">
+                <td>&nbsp;</td>
+                <td class="h-kills">Kills</td>
+                <td class="h-deaths">Deaths</td>
+                <td class="h-score">Score</td>
+            </tr>
+            {% for player in team1.players %}
+            <tr class="{% cycle 'r1' 'r2' %}">
+                <td>
+                <ul class="playerline">
+                    <li class="name"><a href="/hero/{{ player.player.id }}">{{ player.player.name }}</a></li>
+                    <li class="class_{{ player.player.kit }}">&nbsp;</li>
+                    <li class="showlevel level_{{ player.player.level }}">&nbsp;</li>
+                    {% if player.player.vip %}<li><img src="/static/img/star.png" title="Player is a VIP" /></li>{% endif %}
+                </ul>
+                </td>
+                <td align="center">{{ player.kills }}</td>
+                <td align="center">{{ player.deaths }}</td>
+                <td align="center">{{ player.score }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No players</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+    <div id="players-right">
+
+        <table class="players" cellspacing="0">
+            <tr class="labels">
+                <td>&nbsp;</td>
+                <td class="h-kills">Kills</td>
+                <td class="h-deaths">Deaths</td>
+                <td class="h-score">Score</td>
+            </tr>
+            {% for player in team2.players %}
+            <tr class="{% cycle 'r1' 'r2' %}">
+                <td>
+                <ul class="playerline">
+                    <li class="name"><a href="/hero/{{ player.player.id }}">{{ player.player.name }}</a></li>
+                    <li class="class_{{ player.player.kit }}">&nbsp;</li>
+                    <li class="showlevel level_{{ player.player.level }}">&nbsp;</li>
+                    {% if player.player.vip %}<li><img src="/static/img/star.png" title="Player is a VIP" /></li>{% endif %}
+                </ul>
+                </td>
+                <td align="center">{{ player.kills }}</td>
+                <td align="center">{{ player.deaths }}</td>
+                <td align="center">{{ player.score }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No players</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+{% endblock %}

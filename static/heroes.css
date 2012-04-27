@@ -1,0 +1,195 @@
+/*html { padding: 0; }
+
+body { background: #171717; }
+
+#header {
+    border-bottom: 3px solid #666;
+    overflow: hidden;
+}
+
+#header ul {
+    float: right;
+}
+
+#header ul li {
+    float: left;
+    list-style-type: none;
+}
+
+#header ul li a {
+    padding: 10px;
+    margin-left: 5px;
+    color: #fff;
+    font-size: 110%;
+}
+
+h1.status {
+    
+	border: 1px solid #FFD324;
+	background: #FFF6BF;
+	color: #514721;
+    padding: 8px;
+    font-size: 13px;
+    text-align: center;
+}
+
+h1.status .map {
+    font-size: 16px;
+    display: block;
+}*/
+
+#update {
+    padding: 5px;
+    border-top: 2px solid #666;
+    border-bottom: 2px solid #666;
+    background: #ececec url('/static/img/icon_times.jpg') no-repeat left center;
+    background-position: 5px;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+/* Scorebar */
+#score {
+    overflow: hidden;
+    font-size: 46px;
+    color: #fff;
+    text-align: center;
+    text-shadow: #000 2px 2px 1px;
+}
+
+#score #left {
+    float: left;
+    width: 50%;
+    background: #224f93;
+}
+
+#score #right {
+    float: right;
+    width: 50%;
+    background: #942222;
+}
+
+/* Main floats */
+#wrap { overflow: hidden; width: 1000px; margin: 10px auto;  }
+
+#players-left {
+    float: left;
+    width: 49%;
+}
+
+#players-right {
+    float: right;
+    width: 49%;
+    text-align: right;
+}
+
+/* Shit for Class icons */
+.class_c { background: url('/static/img/sprite.png') no-repeat; background-position: -300px 0; width: 32px; height: 32px; }
+.class_g { background: url('/static/img/sprite.png') no-repeat; background-position: -340px 0; width: 32px; height: 32px; }
+.class_s { background: url('/static/img/sprite.png') no-repeat; background-position: -380px 0; width: 32px; height: 32px; }
+
+/* Levels */
+.showlevel { background: url('/static/img/sprite.png') no-repeat; width: 32px; height: 32px;} 
+.level_1 {  background-position: -500px 0;  }
+.level_2 {  background-position: -540px 0;}
+.level_3 {  background-position: -580px 0; }
+.level_4 {  background-position: -620px 0;  }
+.level_5 {  background-position: -660px 0; }
+.level_6 {  background-position: -700px 0; }
+.level_7 { background-position: -740px 0; }
+.level_8 { background-position: -780px 0;}
+.level_9 { background-position: -820px 0; }
+.level_10 { background-position: -860px 0; }
+.level_11 {  background-position: -900px 0; }
+.level_12 {  background-position: -940px 0;  }
+.level_13 { background-position: -980px 0; }
+.level_14 {  background-position: -1020px 0;  }
+.level_15 {  background-position: -1060px 0;  }
+.level_16 {  background-position: -1100px 0;  }
+.level_17 { background-position: -1140px 0; }
+.level_18 { background-position: -1180px 0; }
+.level_19 {  background-position: -1220px 0; }
+.level_20 {  background-position: -1260px 0;  }
+.level_21 {  background-position: -1300px 0;  }
+.level_22 {  background-position: -1340px 0;  }
+.level_23 { background-position: -1380px 0; }
+.level_24 {background-position: -1420px 0; }
+.level_25 {  background-position: -1460px 0;  }
+.level_26 { background-position: -1500px 0; }
+.level_27 { background-position: -1540px 0; }
+.level_28 { background-position: -1580px 0; }
+.level_29 { background-position: -1620px 0; }
+.level_30 { background-position: -1660px 0; }
+
+/* Table */
+td {
+    padding: 10px;
+    line-height: 40px;
+    color: #fff;
+    font-size: 14px;
+}
+
+table.players {
+    width: 100%;
+}
+
+tr.labels td {
+    border-bottom: 2px solid #666;
+    padding: 5px 0;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: #000 1px 1px 1px;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-align: center;
+    line-height: 17px;
+}
+
+tr.labels td.l { text-align: left; }
+
+tr.r1 { background: #752324; }
+tr.r2 { background: #8F3435; }
+
+tr.r1 { background: #646464; }
+tr.r2 { background: #434343; }
+
+tr.labels td.h-kills { width: 5%; padding-right: 5px; }
+tr.labels td.h-deaths { width: 13%; }
+tr.labels td.h-score { width: 7%; }
+
+/* Player line */
+.playerline {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.playerline li {
+    list-style-type: none;
+    float: right;
+    margin-left: 10px;
+    padding: 0;
+    line-height: 32px;
+}
+
+.playerline li.name {
+    font-size: 19px;
+    font-family: Tahoma;
+    color: #FFF;
+    font-weight: bold;
+    text-shadow: #000 1px 1px 1px;
+    line-height: 32px;
+    float: left;
+}
+
+p.server {
+    color: #fff;
+    text-align: right;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+/* Server List */

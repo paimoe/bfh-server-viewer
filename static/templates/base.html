@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ site_title }}HeroesBrowser.com</title>
+<link rel="stylesheet" type="text/css" href="/static/heroes.css" />
+<link rel="stylesheet" type="text/css" href="/css/heroes_clever.css" />
+<script type="text/javascript" src="/static/jquery.js"></script>
+
+<script type="text/javascript">
+    d = new Date();
+    last_update = '{{ last_updated }} ' + ( d.getTimezoneOffset() / 60 );
+    
+    if ({{ do_refresh|default:'false' }})
+    {        
+        var update = function() {
+            $.get("/update/", function(data) {
+                window.location.reload();                
+            });
+        }
+        
+        var updateText = function() {
+            s = $('#last_update_seconds');
+            n = parseInt( s.text() ) + 1;
+            if ( n == 10 )
+            {
+                s.parent().text('Updating...');
+                window.clearInterval(lastUpdatedInterval);
+            }
+            s.text(n);
+        }
+        
+        // Set interval mang
+        intervalId = window.setTimeout(update, 11000);
+        
+        // Last updated seconds thing 
+        lastUpdatedInterval = window.setInterval(updateText,1000);
+    }
+    
+</script>
+
+<script type="text/javascript" src="/static/heroes.js"></script>
+</head>
+
+<body>
+
+<div id="wrap">
+
+<div id="header">
+    <h1><a href="/">Heroes Browser</a></h1>
+    <ul>
+       <li><a href="/">Home</a></li>
+    </ul>
+</div>
+
+{% block content %}{% endblock %}
+
+</div>
+
+</body>
+
+</html>

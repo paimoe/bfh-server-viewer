@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Profile for {{ hero.name }}</h1>
+<p class="subtext">A level {{ hero.level }} {{ hero.faction }} {{ hero.kit }}</p>
+<p class="subtext">&middot; <a href="http://www.battlefieldheroes.com/heroes/{{ hero.hero_id }}">Battlefieldheroes.com Hero Profile</a></p>
+<p class="subtext">&middot; <a href="http://www.battlefieldheroes.com/player/{{ hero.player_id }}">Battlefieldheroes.com Player Profile</a></p>
+
+<h1>Latest Games</h1>
+
+{% if latest %}
+<table class="server-list players">
+    <tr class="labels">
+        <td width="15%">Map</td>
+        <td>K/D</td>
+        <td>Score</td>
+        <td>Server</td>
+    </tr>
+{% for game in latest %}
+    <tr class="{% cycle 'r1' 'r2' %} row">
+        <td><p><a href="/round/{{ game.round.id }}">{{ game.map }}</a></p></td>
+        <td width="15%" title="Royals / Nationals"><div class="monospace"><div class="left">{{ game.kills }}</div> - <div class="right">{{ game.deaths }}</div></div></td>
+        <td width="15%">{{ game.score }}</td>
+        <td width="50%"><a href="/server/{{ game.round.server.id }}">{{ game.round.server.name }}</a></td>
+    </tr>
+{% empty %}
+    <tr>
+        <td colspan="4">No rounds found</td>
+    </tr>
+{% endfor %}
+</table>
+{% endif %}
+
+
+{% endblock %}

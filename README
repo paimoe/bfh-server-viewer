@@ -1,0 +1,3 @@
+Built when I still played roughly 2010. Main server stat fetching is in website.update, ported from some now-lost php code that did the same thing, grabbed the stats from BFH/BF2 servers.
+
+Probably doesn't actually work anymore.

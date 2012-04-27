@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Server List <span class="right">Last updated {{ last_update_seconds|default:0 }} seconds ago</span></h1>
+<p class="subtext">Ordered by {{ order }}</p>
+
+<table class="server-list players">
+    <tr class="labels">
+        <td class="l">Server</td>
+        <td width="15%">Map</td>
+        <td>Players</td>
+        <td>Score</td>
+        <td>Map Started</td>
+    </tr>
+{% for server in servers %}
+    <tr class="{% cycle 'r1' 'r2' %} row">
+        <td class="l"><p><a href="/server/{{ server.id }}">{{ server.name }} ({{ server.location }})</a> <a href="{{ server.bookmark }}"><img src="/static/img/bookmark.png" title="Bookmark this server" /></a><span>{{ server.description }}</span></td>
+        {% if server.no_current_round %}
+            <td colspan="4">No current round</td>
+        {% else %}
+            <td>{{ server.map }}</td>
+            <td title="Royals / Nationals">{{ server.current_royals }} / {{ server.current_nationals }}</td>
+            <td title="Royals / Nationals">{{ server.t1_score }} / {{ server.t2_score }}</td>
+            <td>{{ server.started|timesince }} ago</td>
+        {% endif %}
+    </tr>
+{% empty %}
+    <tr>
+        <td colspan="4">No servers found</td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Latest 20 games on {{ server.name }}</h1>
+<p class="subtext">{{ server.name }} with a total of {{ roundsplayed }} rounds played.</p>
+
+<table class="server-list players">
+    <tr class="labels">
+        <td width="15%">Map</td>
+        <td>Players</td>
+        <td>Score</td>
+        <td>Duration</td>
+    </tr>
+{% for game in games %}
+    <tr class="{% cycle 'r1' 'r2' %} row">
+        <td><p><a href="/round/{{ game.id }}">{{ game.map }}</a></p></td>
+        <td title="{{ game.t1_count }} Royals / {{ game.t2_count }} Nationals">{{ game.player_count }}</td>
+        <td width="15%" title="Royals / Nationals"><div class="monospace"><div class="left">{{ game.t1_score }}</div> - <div class="right">{{ game.t2_score }}</div></div></td>
+        <td>{{ game.time }} </td>
+    </tr>
+{% empty %}
+    <tr>
+        <td colspan="4">No rounds found</td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}
